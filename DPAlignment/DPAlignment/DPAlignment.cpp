@@ -33,6 +33,7 @@ int max(int a, int b, int c, alignment k)
 	switch (k)
 	{
 	case global:
+	case fitting:
 		max = a;
 		break;
 	case local:
@@ -96,26 +97,22 @@ void initTable(int table[n][m], alignment align)
 			table[i][0] = i * -1;
 			break;
 		case local:
-			table[i][0] = 0;
-			break;
 		case fitting:
-			//initialization for fitting
+			table[i][0] = 0;
 			break;
 		}
 	}
-	//intialize first column
+	//intialize top row
 	for (int j = 0; j < m; j++)
 	{
 		switch (align)
 		{
 		case global:
+		case fitting:
 			table[0][j] = j * -1;
 			break;
 		case local:
 			table[0][j] = 0;
-			break;
-		case fitting:
-			//initialization for fitting
 			break;
 		}
 	}
@@ -123,7 +120,7 @@ void initTable(int table[n][m], alignment align)
 
 void Fitting(int table[n][m], string v, string w)
 {
-	alignment align = global;
+	alignment align = fitting;
 
 	initTable(table, align);
 
@@ -145,13 +142,13 @@ void Fitting(int table[n][m], string v, string w)
 
 	cout << "Best global score in last column = " << bestglobal.score << " at " << bestglobal.xpos << endl;
 
-	align = local;
+	//align = local;
 
-	initTable(table, align);
+	//initTable(table, align);
 
-	dpAlignment(table, v, w, align);
+	//dpAlignment(table, v, w, align);
 
-	cout << "Best fit score is: " << table[bestglobal.xpos][m - 1] << endl;
+	//cout << "Best fit score is: " << table[bestglobal.xpos][m - 1] << endl;
 }
 
 void printTable(int table[n][m])
