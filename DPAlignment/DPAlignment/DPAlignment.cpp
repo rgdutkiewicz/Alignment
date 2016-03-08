@@ -6,11 +6,11 @@
 #include <string>
 #include <iomanip>
 
-//TESTING: modifying AddFitting branch of repository
-
+//string length constants
 const int n = 16;
 const int m = 7;
 const int a = 5; //# of characters in alphabet (plus one for blank)
+
 enum alignment
 {
 	global = 1,
@@ -37,9 +37,6 @@ int max(int a, int b, int c, alignment k)
 		break;
 	case local:
 		max = 0;
-		break;
-	case fitting:
-		//max setting for local
 		break;
 	}
 
